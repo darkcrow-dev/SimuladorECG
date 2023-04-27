@@ -2,9 +2,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 class ECGSignal:
-    def __init__(self, fBPM, seconds):
-        self.frecuenciaBPM = fBPM
-        self.segundos = seconds
+    def __init__(self):
+        #Peticion de la frecuencia cardiaca
+        while 1:
+            self.frecuenciaBPM = int(input("Teclee la frecuencia cardiaca entre 30 y 180 BPM: "))
+            if(self.frecuenciaBPM < 30):
+                print("Teclee un numero valido")
+            elif(self.frecuenciaBPM > 180):
+                print(print("Teclee un numero valido"))
+            else:
+                break
+
+        #Peticion del tiempo en segundos para la graficacion
+        while 1:
+            self.segundos = int(input("Teclee el tiempo a graficar en segundos: "))
+            if(self.segundos < 1):
+                print("Teclee un numero valido")
+            else:
+                break
 
         #tiempos en milisegundos
         self.tiempos = np.array([180, 120, 60, 20, 40, 40, 20, 120, 200, 40, 120, 40])*(60/self.frecuenciaBPM)
@@ -74,23 +89,5 @@ class ECGSignal:
         plt.xlim(0, self.segundosTotales)
         plt.show()
 
-#Peticion de la frecuencia cardiaca
-while 1:
-    frecuenciaBPM = int(input("Teclee la frecuencia cardiaca entre 30 y 180 BPM: "))
-    if(frecuenciaBPM < 30):
-        print("Teclee un numero valido")
-    elif(frecuenciaBPM > 180):
-        print(print("Teclee un numero valido"))
-    else:
-        break
-
-#Peticion del tiempo en segundos para la graficacion
-while 1:
-    segundos = int(input("Teclee el tiempo a graficar en segundos: "))
-    if(segundos < 1):
-        print("Teclee un numero valido")
-    else:
-        break
-
-signal = ECGSignal(frecuenciaBPM, segundos)
+signal = ECGSignal()
 signal.signalGraph()
