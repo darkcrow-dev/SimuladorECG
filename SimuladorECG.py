@@ -41,32 +41,33 @@ class ECGSignal:
     def signalGraph(self):
         tiempoContador = 0
         contador = 0
+        productoTiempo = contador*self.tiempoTotal
         funcion = 0
         matrizGraficaY = []
         matrizGraficaX = []
 
         for i in range(0, int(self.segundosTotales)):
-            if(i < (contador*self.tiempoTotal) + self.tiemposSuma[0]):
+            if(i < productoTiempo + self.tiemposSuma[0]):
                 funcion = 0
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[1] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[1] )):
                 funcion = self.amplitudes[0] + pow( (tiempoContador - ( self.tiempos[0] + self.tiempos[1]/2 ) ), 2)/( -4*( pow(self.tiempos[1], 2) )/( 16*self.amplitudes[0] ) )
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[2] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[2] )):
                 funcion = 0
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[3] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[3] )):
                 funcion = ( ( - self.amplitudes[1] )/( - ( - self.tiempos[3] ) ) )*( tiempoContador - (self.tiemposSuma[3]) ) - self.amplitudes[1]
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[4] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[4] )):
                 funcion = ( ( self.amplitudes[2] - ( - self.amplitudes[1] ) )/( - ( - self.tiempos[4] ) ) )*( tiempoContador - (self.tiemposSuma[4]) ) + self.amplitudes[2]
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[5] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[5] )):
                 funcion = ( ( - self.amplitudes[3] - ( self.amplitudes[2] ) )/( - ( - self.tiempos[5] ) ) )*( tiempoContador - (self.tiemposSuma[5] ) ) - self.amplitudes[3]
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[6] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[6] )):
                 funcion = ( ( - ( - self.amplitudes[4] ) )/( - ( - self.tiempos[6] ) ) )*( tiempoContador - (self.tiemposSuma[6]) )
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[7] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[7] )):
                 funcion = 0
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[8] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[8] )):
                 funcion = self.amplitudes[5] + pow( (tiempoContador - ( self.tiemposSuma[7] + self.tiempos[8]/2) ), 2)/( -4*( pow(self.tiempos[8], 2) )/( 16*self.amplitudes[5] ) )
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[9] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[9] )):
                 funcion = 0
-            elif(i < (contador*self.tiempoTotal) + ( self.tiemposSuma[10] )):
+            elif(i < productoTiempo + ( self.tiemposSuma[10] )):
                 funcion = self.amplitudes[6] + pow( (tiempoContador - ( self.tiemposSuma[9] + self.tiempos[10]/2) ), 2)/( -4*( pow(self.tiempos[10], 2) )/( 16*self.amplitudes[6] ) )
             else:
                 funcion = 0
@@ -75,7 +76,7 @@ class ECGSignal:
             matrizGraficaY.append( funcion )
             matrizGraficaX.append( (tiempoContador + (contador*self.tiempoTotal)) )
 
-            if(len(matrizGraficaX) == int((contador*self.tiempoTotal) + self.tiempoTotal)):
+            if(len(matrizGraficaX) == int(productoTiempo + self.tiempoTotal)):
                 contador = contador + 1
                 tiempoContador = 0
 
