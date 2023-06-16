@@ -89,6 +89,7 @@ class ECGSignal:
         plt.title('Grafica del ECG de ' + str(self.frecuenciaBPM) + ' BMP')
         plt.xlim(0, self.segundosTotales)
         plt.show()
+        return
 
 signal = ECGSignal()
 signal.signalGraph()
