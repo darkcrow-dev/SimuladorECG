@@ -46,7 +46,7 @@ class ECGSignal:
         matrizGraficaY = []
         matrizGraficaX = []
 
-        #Señal del ECG modelada de forma matematica
+        #Señal del ritmo cardiaco modelada de forma matematica
         for i in range(0, int(self.segundosTotales)):
             if(i < productoTiempo + self.tiemposSuma[0]):
                 funcion = 0
@@ -81,13 +81,14 @@ class ECGSignal:
                 contador = contador + 1
                 tiempoContador = 0
 
+        #Graficacion de la señal del ritmo cardiaco
         x = matrizGraficaX
         y = matrizGraficaY
 
         plt.plot(x, y)
         plt.xlabel('segundos')
         plt.ylabel('amplitud')
-        plt.title('Grafica del ECG de ' + str(self.frecuenciaBPM) + ' BMP')
+        plt.title('Grafica del ritmo cardiaco de ' + str(self.frecuenciaBPM) + ' BMP')
         plt.xlim(0, self.segundosTotales)
         plt.show()
         return
