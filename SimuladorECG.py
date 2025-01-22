@@ -46,6 +46,7 @@ class ECGSignal:
         matrizGraficaY = []
         matrizGraficaX = []
 
+        #Señal del ECG modelada de forma matematica
         for i in range(0, int(self.segundosTotales)):
             if(i < productoTiempo + self.tiemposSuma[0]):
                 funcion = 0
